@@ -1,14 +1,15 @@
-## FilesGear
+# FilesGear
 
-# Manage you files just from wrist! No need phone connection.
+## Manage you files just from wrist! No need phone connection.
 
 <div>
-    <img src="/screenshots/1.png" width="200"/>
-    <img src="/screenshots/2.png" width="200"/>
-    <img src="/screenshots/3.png" width="200"/>
-    <img src="/screenshots/4.png" width="200"/>
-    <img src="/screenshots/5.png" width="200"/>
-    <img src="/screenshots/6.png" width="200"/>
+    <img src="/screenshots/Screen1.png" width="200"/>
+    <img src="/screenshots/Screen2.png" width="200"/>
+    <img src="/screenshots/Screen3.png" width="200"/>
+    <br/>
+    <img src="/screenshots/Screen4.png" width="200"/>
+    <img src="/screenshots/Screen5.png" width="200"/>
+    <img src="/screenshots/Screen6.png" width="200"/>
 </div>
 
 Features:
@@ -37,7 +38,7 @@ stock player - something like Tizen bug. But Gear S can.
 * When mass copy or move you should check desired files and folders in current directory and press "ok" then you can pick
 folder where you wish to copy/move files. NOTE! You can't copy or move folder inside itself.
 
-# Note!
+## Note!
 * To create or rename you need to install TypeGear from store - it's absolutely free input method for Gear 2. If you have
 Gear S you don't need it.
 * You cannot modify or copy system folders due to stability reasons
