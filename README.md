@@ -3,13 +3,13 @@
 ## Manage you files just from wrist! No need phone connection.
 
 <div>
-    <img src="/screenshots/Screen1.png" width="200"/>
-    <img src="/screenshots/Screen2.png" width="200"/>
-    <img src="/screenshots/Screen3.png" width="200"/>
+    <img src="screenshots/Screen1.png" width="200"/>
+    <img src="screenshots/Screen2.png" width="200"/>
+    <img src="screenshots/Screen3.png" width="200"/>
     <br/>
-    <img src="/screenshots/Screen4.png" width="200"/>
-    <img src="/screenshots/Screen5.png" width="200"/>
-    <img src="/screenshots/Screen6.png" width="200"/>
+    <img src="screenshots/Screen4.png" width="200"/>
+    <img src="screenshots/Screen5.png" width="200"/>
+    <img src="screenshots/Screen6.png" width="200"/>
 </div>
 
 Features:
