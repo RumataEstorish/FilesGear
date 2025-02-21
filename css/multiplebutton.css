@@ -1,0 +1,31 @@
+.drawer-elem {
+	display: none;
+}
+
+@media all and (-tizen-geometric-shape: circle) {
+	.drawer-handler {
+		width:70px;
+		height: 70px;
+		position: fixed;
+		top: 50%;
+		right: 0;
+		color: transparent;
+		background-color: #a4a4a4;
+		transform: translate(0, -50%);
+		-webkit-mask-image: url(images/b_more_option.png);
+		-webkit-mask-repeat: no-repeat;
+		-webkit-mask-position: 46px 20px;
+	}
+	.drawer-elem {
+		display: block;
+		background-color: rgba(255, 255, 255, 0.1);
+		-webkit-mask-image: -webkit-radial-gradient(black 71%,transparent 0);
+	}
+	.ui-bottom-button a {
+		color: rgba(0, 149, 255, 1);
+	}
+	.ui-bottom-button a + a {
+		display: none;
+	}
+}
+

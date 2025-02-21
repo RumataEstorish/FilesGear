@@ -1,0 +1,10 @@
+#delete
+res/wgt/js/contentManagement-1.0.1.1.js
+res/wgt/js/contentManagement-1.0.1.2.js
+#add
+res/wgt/js/contentManagement-1.0.1.js
+#modify
+res/wgt/author-signature.xml
+res/wgt/signature1.xml
+res/wgt/index.html
+res/wgt/js/main.js

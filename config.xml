@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="https://sites.google.com/site/gearapplications/filesgear" version="2.2.2" viewmodes="fullscreen">
+    <tizen:application id="U51JMOP9LX.FilesGear" package="U51JMOP9LX" required_version="2.2"/>
+    <author href="https://sites.google.com/site/gearapplications/filesgear" email="rumata87@mail.ru">Rumata</author>
+    <content src="index.html"/>
+    <description>File manager for Samsung Gear</description>
+    <feature name="http://tizen.org/feature/screen.size.all"/>
+    <icon src="icon_launcher.png"/>
+    <name>FilesGear</name>
+    <tizen:privilege name="http://tizen.org/privilege/filesystem.read"/>
+    <tizen:privilege name="http://tizen.org/privilege/filesystem.write"/>
+    <tizen:privilege name="http://tizen.org/privilege/content.read"/>
+    <tizen:privilege name="http://tizen.org/privilege/content.write"/>
+    <tizen:privilege name="http://tizen.org/privilege/application.info"/>
+    <tizen:privilege name="http://tizen.org/privilege/application.launch"/>
+    <tizen:privilege name="http://tizen.org/privilege/system"/>
+    <tizen:privilege name="http://tizen.org/privilege/unlimitedstorage"/>
+    <tizen:profile name="wearable"/>
+    <tizen:setting background-support="disable" encryption="disable" hwkey-event="enable"/>
+</widget>

@@ -1,0 +1,48 @@
+.ui-header .ui-more.ui-icon-tick {
+  background-color: rgba(116, 196, 252, 1);
+  -webkit-mask-image: url("/images/tick.png");
+  -moz-mask-image: url("/images/tick.png");
+  -ms-mask-image: url("/images/tick.png");
+  -o-mask-image: url("/images/tick.png");
+  mask-image: url("images/tick.png");
+  -webkit-mask-size: 3rem 3rem;
+  -moz-mask-size: 3rem 3rem;
+  -ms-mask-size: 3rem 3rem;
+  -o-mask-size: 3rem 3rem;
+  mask-size: 3rem 3rem;
+  -webkit-mask-position: center;
+  -moz-mask-position: center;
+  -ms-mask-position: center;
+  -o-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -moz-mask-repeat: no-repeat;
+  -ms-mask-repeat: no-repeat;
+  -o-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+.ui-header .ui-more.ui-icon-tick[disabled="disabled"] {
+  cursor: default;
+  background-color: transparent;
+  background-color: rgba(116, 196, 252, 0.2);
+  -webkit-mask-image: url("/images/tick.png");
+  -moz-mask-image: url("/images/tick.png");
+  -ms-mask-image: url("/images/tick.png");
+  -o-mask-image: url("/images/tick.png");
+  mask-image: url("/images/tick.png");
+  -webkit-mask-size: 3.25rem 3.75rem;
+  -moz-mask-size: 3.25rem 3.75rem;
+  -ms-mask-size: 3.25rem 3.75rem;
+  -o-mask-size: 3.25rem 3.75rem;
+  mask-size: 3.25rem 3.75rem;
+  -webkit-mask-position: center;
+  -moz-mask-position: center;
+  -ms-mask-position: center;
+  -o-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -moz-mask-repeat: no-repeat;
+  -ms-mask-repeat: no-repeat;
+  -o-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}

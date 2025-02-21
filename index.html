@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="description" content="FileManager for Gear" />
+
+<title>FilesGear</title>
+
+<link rel="stylesheet" type="text/css"
+	href="lib/tau/wearable/theme/default/tau.min.css">
+
+<link rel="stylesheet" media="all and (-tizen-geometric-shape: circle)"
+	href="lib/tau/wearable/theme/default/tau.circle.min.css">
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet" href="css/squareStyle.css">
+<link rel="stylesheet" media="all and (-tizen-geometric-shape: circle)"
+	href="css/circleStyle.css">
+
+<link rel="stylesheet" href="css/filesGearSquareStyle.css">
+<link rel="stylesheet" media="all and (-tizen-geometric-shape: circle)"
+	href="css/filesGearCircleStyle.css">
+
+<link rel="stylesheet" href="css/multiplebutton.css">
+
+
+<script type="text/javascript" src="lib/tau/wearable/js/tau.min.js"></script>
+
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+
+<script type="text/javascript" src="js/toastMessage-1.0.1.1.js"></script>
+<script type="text/javascript" src="js/actionMenu-2.0.0.1.js"></script>
+<script type="text/javascript" src="js/virtualList-2.0.0.js"></script>
+<script type="text/javascript" src="js/sortByEnum.js"></script>
+<script type="text/javascript" src="js/sortOrderEnum.js"></script>
+<script type="text/javascript" src="js/filesAction-1.0.0.js"></script>
+<script type="text/javascript" src="js/contentManagement-1.0.1.js"></script>
+<script type="text/javascript" src="js/dirs-1.0.2.js"></script>
+<script type="text/javascript" src="js/listDirTypes-1.0.0.js"></script>
+<script type="text/javascript" src="js/actionPopup.js"></script>
+
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/circle-helper.js"></script>
+
+<script src="locales/en-us/language.js"></script>
+<script src="language.js"></script>
+
+</head>
+
+<body>
+
+	<div class="ui-page "></div>
+	<div id="blankPage" class="ui-page"></div>
+
+	<div class="ui-page" id="processingPage">
+		<header class="ui-header">
+			<h2 class="ui-title">Processing</h2>
+		</header>
+		<div id="processingText" class="ui-content content-padding"></div>
+		<div class="ui-processing ui-processing-full-size"
+			style="visibility: hidden;"></div>
+		<script type="text/javascript">
+			(function() {
+				var page = document.getElementById("processingPage");
+				page.addEventListener("pageshow", function(event) {
+					var page = event.target, processing = page.querySelector(".ui-processing");
+					processing.style.visibility = "";
+				}, false);
+
+				page.addEventListener("pagebeforehide", function(event) {
+					var page = event.target, processing = page.querySelector(".ui-processing");
+					processing.style.visibility = "hidden";
+				}, false);
+			}());
+		</script>
+	</div>
+
+	<div class="ui-page" id="smallProcessingPage">
+		<header class="ui-header">
+			<h2 class="ui-title">Processing</h2>
+		</header>
+		<div class="ui-content content-padding">
+			<div class="small-processing-container">
+				<div class="ui-processing" style="visibility: hidden;"></div>
+				<div id="smallProcessingText" class="ui-processing-text"></div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			(function() {
+				var page = document.getElementById("smallProcessingPage");
+				page.addEventListener("pageshow", function(event) {
+					var page = event.target, processing = page.querySelector(".ui-processing");
+					processing.style.visibility = "";
+				}, false);
+
+				page.addEventListener("pagebeforehide", function(event) {
+					var page = event.target, processing = page.querySelector(".ui-processing");
+					processing.style.visibility = "hidden";
+				}, false);
+			}());
+		</script>
+	</div>
+
+	<div class="ui-page ui-page-active" id="pageDir">
+		<header class="ui-header ui-has-more">
+			<h2 class="ui-title ui-icon" style="background-image: url(icon.png)"></h2>
+			<button type="button" id="mainMenu" onclick="menuClick()"
+				class="ui-more ui-icon-overflow">More Options</button>
+		</header>
+		<div class="ui-content ui-content-padding">
+			<ul id="pageDirList" class="ui-listview ui-files ui-virtuallistview">
+			</ul>
+		</div>
+	</div>
+
+
+
+	<div class="ui-page" id="pickFilePage">
+		<header class="ui-header ui-has-more">
+			<h2 id="pickFilesHeader" class="ui-title ui-icon"></h2>
+			<button type="button" class="ui-more ui-icon-overflow" style="z-index: 100" onclick="showPickFilePageMenu()"></button>
+		</header>
+		<div class="ui-content">
+			<ul id="pickFilePageList" class="ui-listview ui-files ui-virtuallistview">
+			</ul>
+		</div>
+		
+		<footer class="ui-footer ui-grid-col-2 ui-bottom-button">
+			<a href="#" id="pickFilesOk"
+				class="ui-btn">OK</a>
+			<a href="#" id="pickFilesCancel" class="ui-btn"
+				onclick="cancelPickClick()">Cancel</a> 
+		</footer>
+		<!-- <script type="text/javascript" src="js/multiplebutton.js"></script>-->
+	</div>
+
+	<div class="ui-page" id="selectModePage">
+		<header class="ui-header ui-has-more">
+			<h2 id="selectFilesHeader" class="ui-title ui-icon"></h2>
+			<button type="button" id="selectModeButtonOk"
+				class="ui-more ui-icon-tick"></button>
+		</header>
+
+		<div class="ui-content">
+			<ul id="selectFilesList" class="ui-listview ui-files ui-virtuallistview">
+			</ul>
+		</div>
+
+		<div class="select-mode">
+			<!-- select button -->
+			<div class="select-btn" id="select-btn">
+				<a class="select-btn-text" id="select-btn-text"></a>
+			</div>
+			<!-- select option popup -->
+			<div class="select-popup">
+				<ul class="ui-listview">
+					<li><a href="#" id="select-all">Select all</a></li>
+					<li><a href="#" id="deselect-all">Deselect all</a></li>
+				</ul>
+			</div>
+		</div>
+
+
+		<!-- Drawer Handler -->
+
+		<script type="text/javascript" src="js/list_selectmode.js"></script>
+	</div>
+
+	<div class="ui-page" id="menuPage">
+		<header class="ui-header">
+			<h2 class="ui-title"></h2>
+		</header>
+		<div class="ui-content">
+			<ul class="ui-listview">
+				<li><a href="#" id="createFolderMenuItem"
+					onclick="createFolderClick()">Create folder</a></li>
+				<li><a href="#" id="shareMenuItem" onclick="shareFiles()">Share</a></li>
+				<li><a href="#" id="copyMenuItem" onclick="copyFiles()">Copy</a></li>
+				<li><a href="#" id="moveMenuItem" onclick="moveFiles()">Move</a></li>
+				<!-- <li><a href="#" id="renameMenuItem" onclick="renameFileClick()">Rename</a></li>-->
+				<li><a href="#" id="removeMenuItem" onclick="deleteFiles()">Delete</a></li>
+				<li><a href="#" id="refreshMenuItem" onclick="refreshFiles()">Refresh</a></li>
+				<li class="li-has-multiline"><a href="#" id="sortByMenu"
+					onclick="changeSortBy()">Sort by<span
+						class="ui-li-sub-text li-text-sub" id="sortingByValue">Name</span></a></li>
+				<li class="li-has-multiline"><a href="#" id="sortOrderMenu"
+					onclick="changeSortOrder()">Sort order<span
+						class="ui-li-sub-text li-text-sub" id="sortingOrderValue">Ascending</span></a></li>
+				<li class="li-has-multiline li-has-toggle"><label
+					id="showExtensionLabel"> <span id="showExtensionSpan"
+						class="li-text-sub ui-li-sub-text">file extension</span>
+						<div class="ui-toggleswitch">
+							<input onclick="showExtensionClick()" type="checkbox"
+								class="ui-switch-input" id="showExtension" />
+							<div class="ui-switch-button"></div>
+						</div>
+				</label></li>
+				<li class="li-has-multiline li-has-toggle"><label
+					id="showDotFilesLabel"> <span id="showDotFilesSpan"
+						class="li-text-sub ui-li-sub-text">files starts with .</span>
+						<div class="ui-toggleswitch">
+							<input onclick="showDotFilesClick()" class="ui-switch-input"
+								type="checkbox" id="showDotFiles" />
+							<div class="ui-switch-button"></div>
+						</div>
+				</label></li>
+				<li><a href="#" id="exitMenuItem" onclick="exitClick()">Exit</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="ui-page" id="sortByPage">
+		<div class="ui-content">
+			<ul class="ui-listview">
+				<li class="li-has-radio"><label id="sortByName"><input
+						type="radio" name="sort" /> </label></li>
+				<li class="li-has-radio"><label id="sortBySize"><input
+						type="radio" name="sort" /></label></li>
+				<li class="li-has-radio"><label id="sortByCreated"><input
+						type="radio" name="sort" /></label></li>
+				<li class="li-has-radio"><label id="sortByModified"><input
+						type="radio" name="sort" /></label></li>
+				<li class="li-has-radio"><label id="sortByType"><input
+						type="radio" name="sort" /></label></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="ui-page" id="sortOrderPage">
+		<div class="ui-content">
+			<ul class="ui-listview">
+				<li class="li-has-radio"><label id="sortAsc">Ascending<input
+						type="radio" name="order" /></label></li>
+				<li class="li-has-radio"><label id="sortDesc">Descending<input
+						type="radio" name="order" /></label></li>
+			</ul>
+		</div>
+	</div>
+
+
+	<div class="ui-page" id="fileInfoPage">
+		<header class="ui-header">
+			<h2 class="ui-title"></h2>
+		</header>
+		<div class="ui-content">
+			<ul class="ui-listview">
+				<li class="li-has-multiline" onclick="fileNameClick(this)"><a
+					href="#" id="fileNameA">Name<span
+						class="ui-li-sub-text li-text-sub" id="fileNameLabel"></span></a></li>
+				<li class="li-has-multiline"><a href="#" id="fileSizeA">Size<span
+						class="ui-li-sub-text li-text-sub" id="fileSizeLabel"></span></a></li>
+				<li class="li-has-multiline 2lines"><a href="#"
+					id="fileCreatedA">Created <span
+						class="ui-li-sub-text li-text-sub" id="createdLabel"></span> <span
+						class="ui-li-sub-text li-text-sub" id="createdSpanTime"></span>
+				</a></li>
+				<li class="li-has-multiline 2lines"><a href="#"
+					id="fileModifiedA">Modified <span
+						class="ui-li-sub-text li-text-sub" id="modifiedLabel"></span> <span
+						class="ui-li-sub-text li-text-sub" id="modifiedSpanTime"></span>
+				</a></li>
+				<li class="li-has-checkbox"><label id="isReadOnlySpan"><input
+						type="checkbox" id="isReadonlyCheck" checked="checked"
+						disabled="disabled" /></label></li>
+			</ul>
+		</div>
+	</div>
+	 
+	 <div id="popupToast" class="ui-popup ui-popup-toast">
+		<div id="popupToastMsg" class="ui-popup-content"></div>
+	</div>
+
+		<div id="inputSquarePage" class="ui-page">
+		<link rel="stylesheet" href="/input/inputStyleSquare.css">
+		<div id="inputSquareContent" class="ui-content input-content">
+			<textarea id="inputSquareArea" class="input-area"></textarea>
+			<input type="text" id="inputSquareAreaOneLine" class="input-area" />
+			<button id="confirmButton" class="confirm-button"></button>
+		</div>
+		<footer class="ui-footer ui-bottom-button ui-fixed" id="confirmFooter">
+			<button class="ui-btn ui-btn-icon-only confirm-button-footer"></button>
+		</footer>
+	</div>
+
+	<div id="inputCirclePage" class="ui-page">
+		<link rel="stylesheet"
+			media="all and (-tizen-geometric-shape: circle)"
+			href="/input/inputStyleCircle.css">
+		<div class="ui-content">
+			<div id="inputContentCircle" class="input-content">
+				<textarea id="inputCircleArea" class="input-area"></textarea>
+				<input type="text" id="inputCircleAreaOneLine" class="input-area" />
+				<button id="confirmCircleButton" class="confirm-button"></button>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="input/typeGear-1.0.0.js"></script>
+	<script type="text/javascript" src="input/utils-2.1.4.2.js"></script>
+	<script type="text/javascript" src="input/input-1.0.1.js"></script>
+
+</body>
+</html>

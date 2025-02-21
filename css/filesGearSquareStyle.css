@@ -1,0 +1,21 @@
+.ui-files .files-li {
+	line-height: 2.8235294117647056rem;
+	min-height: 2.8235294117647056rem;
+	/*padding: 0.0rem 0.5rem 0.5rem 0.5rem;*/
+	margin: 0rem 0rem 0rem 0rem;
+}
+
+.fake-popuplink {
+	display: none;
+	background-color: red;
+	margin: 0px;
+	padding: 0px;
+}
+
+.file-icon {
+	background-color: rgba(0, 0, 0, 0);
+}
+
+.folder-icon {
+	background-color: rgba(0, 0, 0, 0);
+}
